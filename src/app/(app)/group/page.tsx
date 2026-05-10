@@ -22,7 +22,7 @@ export default function GroupPage() {
   );
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <PageHeader
         title="Group Travel"
         subtitle="Shared itineraries, split costs, registries."

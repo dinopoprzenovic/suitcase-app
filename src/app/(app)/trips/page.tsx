@@ -14,7 +14,7 @@ export default function TripsPage() {
     filter === "all" ? trips : trips.filter((t) => t.status === filter);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <PageHeader
         title="My Trips"
         subtitle={`${trips.length} trips total`}

@@ -20,20 +20,20 @@ export default function DashboardPage() {
   const totalSpent = trips.reduce((s, t) => s + t.budget.spent, 0);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {/* Greeting + notification bell */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-lg font-semibold text-[#0A0A0A]">
+          <h1 className="text-base font-semibold text-[#0A0A0A]">
             Hi, {mockUser.name.split(" ")[0]}
           </h1>
-          <p className="text-xs text-[#737373]">Here&apos;s your travel overview.</p>
+          <p className="text-[11px] text-[#737373]">Here&apos;s your travel overview.</p>
         </div>
         <NotificationPanel notifications={notifications} />
       </div>
 
       {/* Stats 2x2 grid */}
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-2">
         <StatCard
           label="Total Trips"
           value={String(trips.length)}

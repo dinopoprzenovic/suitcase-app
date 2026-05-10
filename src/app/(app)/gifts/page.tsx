@@ -46,7 +46,7 @@ export default function GiftsPage() {
   const [showCreate, setShowCreate] = useState(false);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <PageHeader
         title="Travel Gifts"
         subtitle="Send a trip to someone special."

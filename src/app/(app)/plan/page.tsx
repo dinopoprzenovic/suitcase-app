@@ -54,7 +54,7 @@ export default function PlanPage() {
 
   if (generated) {
     return (
-      <div className="space-y-4">
+      <div className="space-y-3">
         <div className="flex items-center gap-2">
           <button
             onClick={() => {
@@ -92,7 +92,7 @@ export default function PlanPage() {
         </div>
 
         {/* Itinerary */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {sampleTrip.itinerary.map((day) => (
             <div key={day.day}>
               <div className="mb-2 flex items-baseline gap-2">
@@ -175,7 +175,7 @@ export default function PlanPage() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <PageHeader
         title="Plan a Trip"
         subtitle="Tell us where you want to go."
@@ -188,7 +188,7 @@ export default function PlanPage() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="space-y-4"
+            className="space-y-3"
           >
             <div>
               <label className="mb-1.5 block text-xs font-medium">
@@ -262,7 +262,7 @@ export default function PlanPage() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="space-y-4"
+            className="space-y-3"
           >
             <div className="grid grid-cols-2 gap-3">
               <div>
@@ -389,7 +389,7 @@ export default function PlanPage() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
-            className="space-y-4"
+            className="space-y-3"
           >
             <div>
               <label className="mb-2 block text-xs font-medium">

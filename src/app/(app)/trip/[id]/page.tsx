@@ -46,7 +46,7 @@ export default function TripDetailPage({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2">
@@ -181,7 +181,7 @@ export default function TripDetailPage({
       </div>
 
       {/* Itinerary days */}
-      <div className="space-y-4">
+      <div className="space-y-3">
         {trip.itinerary.map((day, di) => (
           <motion.div
             key={day.day}

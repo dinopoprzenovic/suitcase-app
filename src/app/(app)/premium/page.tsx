@@ -15,7 +15,7 @@ import {
 
 export default function PremiumPage() {
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <PageHeader
         title="Suitcase Premium"
         subtitle="Ad-free travel, priority access, insurance, discounts."

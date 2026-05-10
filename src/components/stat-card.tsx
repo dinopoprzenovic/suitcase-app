@@ -9,14 +9,14 @@ interface StatCardProps {
 
 export function StatCard({ label, value, change, icon }: StatCardProps) {
   return (
-    <div className="bg-white border border-[#E5E5E5] rounded-lg p-3 space-y-2">
-      <div className="w-8 h-8 rounded-full bg-[#E8643A]/10 flex items-center justify-center text-[#E8643A]">
+    <div className="bg-white border border-[#E5E5E5] rounded-lg p-2.5 space-y-1.5">
+      <div className="w-7 h-7 rounded-full bg-[#E8643A]/10 flex items-center justify-center text-[#E8643A]">
         {icon}
       </div>
       <div>
-        <span className="text-lg font-semibold text-[#0A0A0A] leading-none">{value}</span>
-        <p className="text-[11px] text-[#737373] mt-0.5">{label}</p>
-        {change && <p className="text-[10px] text-[#737373] mt-0.5">{change}</p>}
+        <span className="text-base font-semibold text-[#0A0A0A] leading-none">{value}</span>
+        <p className="text-[10px] text-[#737373] mt-0.5">{label}</p>
+        {change && <p className="text-[9px] text-[#737373] mt-0.5">{change}</p>}
       </div>
     </div>
   );

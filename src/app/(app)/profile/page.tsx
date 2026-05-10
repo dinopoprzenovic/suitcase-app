@@ -14,7 +14,7 @@ import {
 
 export default function ProfilePage() {
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <PageHeader title="Profile" subtitle="Manage your account and preferences." />
 
       {/* Profile card */}

@@ -27,7 +27,7 @@ export function BottomNav() {
   };
 
   return (
-    <nav className="flex items-center justify-around bg-white border-t border-[#E5E5E5] px-2 pb-6 pt-2">
+    <nav className="flex items-center justify-around bg-white border-t border-[#E5E5E5] px-2 pb-7 pt-1.5 shrink-0">
       {TABS.map(({ label, href, icon: Icon }) => {
         const active = isActive(href);
         return (

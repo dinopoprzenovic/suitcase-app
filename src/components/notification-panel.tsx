@@ -75,8 +75,7 @@ export function NotificationPanel({ notifications: initial }: NotificationPanelP
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.14, ease: 'easeOut' }}
-            className="fixed left-0 right-0 top-auto mt-2 mx-3 bg-white border border-[#E5E5E5] rounded-xl shadow-lg overflow-hidden z-50"
-            style={{ maxWidth: '100vw' }}
+            className="absolute right-0 top-11 w-[300px] bg-white border border-[#E5E5E5] rounded-xl shadow-lg overflow-hidden z-50"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-3 py-2.5 border-b border-[#F5F5F5]">

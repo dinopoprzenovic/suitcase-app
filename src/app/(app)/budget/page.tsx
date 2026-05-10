@@ -57,7 +57,7 @@ export default function BudgetPage() {
     .slice(0, 10);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <PageHeader
         title="Budget Tracker"
         subtitle="Track spending across all your trips."

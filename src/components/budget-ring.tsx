@@ -27,7 +27,7 @@ export function BudgetRing({ spent, total, currency }: BudgetRingProps) {
   const viewSize = (RADIUS + STROKE) * 2;
 
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col items-center gap-2">
       <div className="relative" style={{ width: viewSize, height: viewSize }}>
         <svg
           width={viewSize}
@@ -82,7 +82,7 @@ export function BudgetRing({ spent, total, currency }: BudgetRingProps) {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center gap-4 text-xs">
+      <div className="flex items-center gap-4 text-[11px]">
         <div className="flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-[#E8643A]" />
           <span className="text-[#737373]">Spent</span>
