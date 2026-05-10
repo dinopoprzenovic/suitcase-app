@@ -14,27 +14,28 @@ export default function TripsPage() {
     filter === "all" ? trips : trips.filter((t) => t.status === filter);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <PageHeader
         title="My Trips"
         subtitle={`${trips.length} trips total`}
         action={
           <Link
             href="/plan"
-            className="flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+            className="flex items-center gap-1.5 rounded-lg bg-accent px-3 py-2 text-xs font-medium text-white transition-colors hover:bg-accent-hover"
           >
-            <Plus size={16} />
-            New Trip
+            <Plus size={14} />
+            New
           </Link>
         }
       />
 
-      <div className="flex gap-2">
+      {/* Horizontally scrollable filter pills */}
+      <div className="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-hide">
         {["all", "upcoming", "active", "completed", "draft"].map((f) => (
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`rounded-full px-4 py-1.5 text-sm font-medium capitalize transition-colors ${
+            className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium capitalize transition-colors ${
               filter === f
                 ? "bg-foreground text-background"
                 : "bg-foreground/5 text-muted hover:text-foreground"
@@ -45,15 +46,16 @@ export default function TripsPage() {
         ))}
       </div>
 
-      <div className="grid grid-cols-3 gap-5">
+      {/* Single column trip list */}
+      <div className="space-y-2">
         {filtered.map((trip, i) => (
           <TripCard key={trip.id} trip={trip} index={i} />
         ))}
       </div>
 
       {filtered.length === 0 && (
-        <div className="py-20 text-center">
-          <p className="text-muted">No trips found.</p>
+        <div className="py-12 text-center">
+          <p className="text-xs text-muted">No trips found.</p>
         </div>
       )}
     </div>

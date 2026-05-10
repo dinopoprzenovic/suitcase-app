@@ -15,60 +15,60 @@ import {
 
 export default function PremiumPage() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-4">
       <PageHeader
         title="Suitcase Premium"
-        subtitle="Upgrade for ad-free travel, priority access, embedded insurance, and partner discounts."
+        subtitle="Ad-free travel, priority access, insurance, discounts."
       />
 
-      {/* Plans */}
-      <div className="mx-auto grid max-w-[800px] grid-cols-2 gap-6">
+      {/* Plans — stacked vertically */}
+      <div className="space-y-3">
         {premiumPlans.map((plan, i) => (
           <motion.div
             key={plan.name}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
-            className={`relative rounded-2xl border p-7 ${
+            className={`relative rounded-lg border p-4 ${
               plan.highlighted
-                ? "border-accent bg-gradient-to-b from-accent/5 to-transparent shadow-lg shadow-accent/10"
+                ? "border-accent bg-gradient-to-b from-accent/5 to-transparent shadow-md shadow-accent/10"
                 : "border-border bg-card"
             }`}
           >
             {plan.highlighted && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-4 py-1 text-xs font-semibold text-white">
+              <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-accent px-3 py-0.5 text-[10px] font-semibold text-white">
                 Recommended
               </div>
             )}
             <div className="flex items-center gap-2">
               {plan.highlighted ? (
-                <Crown size={20} className="text-accent" />
+                <Crown size={16} className="text-accent" />
               ) : (
-                <Star size={20} className="text-muted" />
+                <Star size={16} className="text-muted" />
               )}
-              <h3 className="text-lg font-semibold">{plan.name}</h3>
+              <h3 className="text-sm font-semibold">{plan.name}</h3>
             </div>
-            <div className="mt-4 flex items-baseline gap-1">
-              <span className="text-4xl font-semibold">
+            <div className="mt-2 flex items-baseline gap-1">
+              <span className="text-2xl font-semibold">
                 {plan.price === 0 ? "Free" : `€${plan.price}`}
               </span>
               {plan.price > 0 && (
-                <span className="text-sm text-muted">/ {plan.period}</span>
+                <span className="text-xs text-muted">/ {plan.period}</span>
               )}
             </div>
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-3 space-y-2">
               {plan.features.map((feature) => (
-                <li key={feature} className="flex items-start gap-2.5">
+                <li key={feature} className="flex items-start gap-2">
                   <Check
-                    size={16}
+                    size={14}
                     className={`mt-0.5 shrink-0 ${plan.highlighted ? "text-accent" : "text-muted"}`}
                   />
-                  <span className="text-sm">{feature}</span>
+                  <span className="text-xs">{feature}</span>
                 </li>
               ))}
             </ul>
             <button
-              className={`mt-8 flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-medium transition-colors ${
+              className={`mt-4 flex w-full items-center justify-center gap-2 rounded-lg py-2.5 text-sm font-medium transition-colors ${
                 plan.highlighted
                   ? "bg-accent text-white hover:bg-accent-hover"
                   : "border border-border hover:bg-foreground/5"
@@ -77,7 +77,7 @@ export default function PremiumPage() {
               {plan.highlighted ? (
                 <>
                   Upgrade to Premium
-                  <ArrowRight size={14} />
+                  <ArrowRight size={12} />
                 </>
               ) : (
                 "Current Plan"
@@ -87,23 +87,23 @@ export default function PremiumPage() {
         ))}
       </div>
 
-      {/* Premium features detail */}
-      <div className="grid grid-cols-3 gap-5">
+      {/* Premium features — single column */}
+      <div className="space-y-3">
         {[
           {
-            icon: <Shield size={20} />,
+            icon: <Shield size={16} />,
             title: "Embedded Insurance",
-            desc: "Every Premium trip includes travel insurance — cancellation protection, medical coverage, and baggage protection. No separate purchase needed.",
+            desc: "Every Premium trip includes travel insurance — cancellation, medical, and baggage protection.",
           },
           {
-            icon: <Zap size={20} />,
+            icon: <Zap size={16} />,
             title: "Priority Access",
-            desc: "Skip the queue on popular restaurants, activities, and experiences. Premium users get early access to limited-availability bookings.",
+            desc: "Skip queues on popular restaurants and experiences. Early access to limited bookings.",
           },
           {
-            icon: <Sparkles size={20} />,
+            icon: <Sparkles size={16} />,
             title: "AI Concierge",
-            desc: "Advanced AI trip optimization with preference learning across trips. The more you travel, the better Suitcase knows you.",
+            desc: "Advanced AI trip optimization with preference learning. The more you travel, the better it gets.",
           },
         ].map((feature, i) => (
           <motion.div
@@ -111,29 +111,31 @@ export default function PremiumPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 + i * 0.1 }}
-            className="rounded-xl border border-border bg-card p-6"
+            className="rounded-lg border border-border bg-card p-3"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
-              {feature.icon}
+            <div className="flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                {feature.icon}
+              </div>
+              <h3 className="text-sm font-semibold">{feature.title}</h3>
             </div>
-            <h3 className="mt-4 font-semibold">{feature.title}</h3>
-            <p className="mt-2 text-sm text-muted">{feature.desc}</p>
+            <p className="mt-2 text-xs text-muted">{feature.desc}</p>
           </motion.div>
         ))}
       </div>
 
       {/* Assurance section */}
-      <div className="rounded-xl border border-border bg-card p-8">
-        <div className="flex items-center gap-3">
-          <Shield size={24} className="text-accent" />
+      <div className="rounded-lg border border-border bg-card p-3">
+        <div className="flex items-center gap-2">
+          <Shield size={16} className="text-accent" />
           <div>
-            <h3 className="text-lg font-semibold">Suitcase Assurance</h3>
-            <p className="text-sm text-muted">
+            <h3 className="text-sm font-semibold">Suitcase Assurance</h3>
+            <p className="text-[11px] text-muted">
               Confidence priced into every itinerary
             </p>
           </div>
         </div>
-        <div className="mt-6 grid grid-cols-3 gap-6">
+        <div className="mt-3 space-y-3">
           {[
             {
               title: "Free Cancellation",
@@ -150,10 +152,10 @@ export default function PremiumPage() {
           ].map((item) => (
             <div
               key={item.title}
-              className="border-l-2 border-accent/30 pl-4"
+              className="border-l-2 border-accent/30 pl-3"
             >
-              <h4 className="text-sm font-semibold">{item.title}</h4>
-              <p className="mt-1 text-xs text-muted">{item.desc}</p>
+              <h4 className="text-xs font-semibold">{item.title}</h4>
+              <p className="mt-0.5 text-[11px] text-muted">{item.desc}</p>
             </div>
           ))}
         </div>

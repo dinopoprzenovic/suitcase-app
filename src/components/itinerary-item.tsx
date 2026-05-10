@@ -38,24 +38,24 @@ export function ItineraryItem({ item, isLast }: ItineraryItemProps) {
   const statusStyle = STATUS_STYLES[item.status] ?? STATUS_STYLES.pending;
 
   return (
-    <div className={`flex items-center gap-4 py-4 ${isLast ? '' : 'border-b border-[#F5F5F5]'}`}>
+    <div className={`flex items-center gap-3 px-3 py-2.5 ${isLast ? '' : 'border-b border-[#F5F5F5]'}`}>
       {/* Type icon */}
-      <div className={`w-10 h-10 rounded-xl ${bg} flex items-center justify-center shrink-0`}>
-        <Icon className={`w-4 h-4 ${color}`} strokeWidth={2} />
+      <div className={`w-8 h-8 rounded-lg ${bg} flex items-center justify-center shrink-0`}>
+        <Icon className={`w-3.5 h-3.5 ${color}`} strokeWidth={2} />
       </div>
 
       {/* Main content */}
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-[#0A0A0A] truncate">{item.title}</p>
-        <p className="text-xs text-[#737373] truncate mt-0.5">{item.subtitle}</p>
-        <div className="flex items-center gap-3 mt-1.5">
-          <span className="flex items-center gap-1 text-[11px] text-[#737373]">
-            <Clock className="w-3 h-3" />
+        <p className="text-xs font-medium text-[#0A0A0A] truncate">{item.title}</p>
+        <p className="text-[11px] text-[#737373] truncate mt-0.5">{item.subtitle}</p>
+        <div className="flex items-center gap-2 mt-1">
+          <span className="flex items-center gap-0.5 text-[10px] text-[#737373]">
+            <Clock className="w-2.5 h-2.5" />
             {item.time}{item.duration ? ` · ${item.duration}` : ''}
           </span>
           {item.location && (
-            <span className="flex items-center gap-1 text-[11px] text-[#737373] truncate">
-              <MapPin className="w-3 h-3 shrink-0" />
+            <span className="flex items-center gap-0.5 text-[10px] text-[#737373] truncate">
+              <MapPin className="w-2.5 h-2.5 shrink-0" />
               {item.location}
             </span>
           )}
@@ -63,11 +63,11 @@ export function ItineraryItem({ item, isLast }: ItineraryItemProps) {
       </div>
 
       {/* Right: cost + status */}
-      <div className="flex flex-col items-end gap-1.5 shrink-0">
-        <span className="text-sm font-semibold text-[#0A0A0A]">
+      <div className="flex flex-col items-end gap-1 shrink-0">
+        <span className="text-xs font-semibold text-[#0A0A0A]">
           {item.cost > 0 ? formatCurrency(item.cost, item.currency) : '—'}
         </span>
-        <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold capitalize ${statusStyle}`}>
+        <span className={`px-1.5 py-0.5 rounded-full text-[9px] font-semibold capitalize ${statusStyle}`}>
           {item.status}
         </span>
       </div>

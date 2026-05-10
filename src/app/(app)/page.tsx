@@ -4,13 +4,11 @@ import { trips, notifications, mockUser, gifts } from "@/lib/data";
 import { TripCard } from "@/components/trip-card";
 import { StatCard } from "@/components/stat-card";
 import { NotificationPanel } from "@/components/notification-panel";
-import { PageHeader } from "@/components/page-header";
 import {
   MapPin,
   Wallet,
   TrendingUp,
   Plane,
-  Plus,
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
@@ -20,51 +18,44 @@ export default function DashboardPage() {
   const upcomingTrips = trips.filter((t) => t.status === "upcoming");
   const activeTrips = trips.filter((t) => t.status === "active");
   const totalSpent = trips.reduce((s, t) => s + t.budget.spent, 0);
-  const totalBudget = trips.reduce((s, t) => s + t.budget.total, 0);
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-start justify-between">
-        <PageHeader
-          title={`Welcome back, ${mockUser.name.split(" ")[0]}`}
-          subtitle="Here's what's happening with your travels."
-        />
-        <div className="flex items-center gap-3 pt-1">
-          <NotificationPanel notifications={notifications} />
-          <Link
-            href="/plan"
-            className="flex items-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
-          >
-            <Plus size={16} />
-            Plan a Trip
-          </Link>
+    <div className="space-y-4">
+      {/* Greeting + notification bell */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-lg font-semibold text-[#0A0A0A]">
+            Hi, {mockUser.name.split(" ")[0]}
+          </h1>
+          <p className="text-xs text-[#737373]">Here&apos;s your travel overview.</p>
         </div>
+        <NotificationPanel notifications={notifications} />
       </div>
 
-      {/* Stats row */}
-      <div className="grid grid-cols-4 gap-4">
+      {/* Stats 2x2 grid */}
+      <div className="grid grid-cols-2 gap-3">
         <StatCard
           label="Total Trips"
           value={String(trips.length)}
           change="+2 this year"
-          icon={<Plane size={18} />}
+          icon={<Plane size={16} />}
         />
         <StatCard
-          label="Countries Visited"
+          label="Countries"
           value="4"
           change="+1 this month"
-          icon={<MapPin size={18} />}
+          icon={<MapPin size={16} />}
         />
         <StatCard
           label="Total Spent"
           value={`€${totalSpent.toLocaleString()}`}
-          icon={<Wallet size={18} />}
+          icon={<Wallet size={16} />}
         />
         <StatCard
           label="Avg. Savings"
           value="18%"
           change="vs. booking separately"
-          icon={<TrendingUp size={18} />}
+          icon={<TrendingUp size={16} />}
         />
       </div>
 
@@ -73,27 +64,27 @@ export default function DashboardPage() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative overflow-hidden rounded-xl border border-accent/20 bg-gradient-to-r from-accent/5 to-transparent p-6"
+          className="relative overflow-hidden rounded-lg border border-accent/20 bg-gradient-to-r from-accent/5 to-transparent p-3"
         >
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs font-medium tracking-wider text-accent uppercase">
+              <p className="text-[10px] font-medium tracking-wider text-accent uppercase">
                 Active Trip
               </p>
-              <h3 className="mt-1 text-xl font-semibold">
+              <h3 className="mt-0.5 text-sm font-semibold">
                 {activeTrips[0].title}
               </h3>
-              <p className="mt-1 text-sm text-muted">
+              <p className="mt-0.5 text-xs text-muted">
                 {activeTrips[0].destination}, {activeTrips[0].country} &middot;{" "}
                 Day 2 of {activeTrips[0].itinerary.length}
               </p>
             </div>
             <Link
               href={`/trip/${activeTrips[0].id}`}
-              className="flex items-center gap-2 rounded-lg border border-accent/30 px-4 py-2 text-sm font-medium text-accent transition-colors hover:bg-accent/10"
+              className="flex items-center gap-1 rounded-lg border border-accent/30 px-3 py-1.5 text-xs font-medium text-accent transition-colors hover:bg-accent/10"
             >
-              View Itinerary
-              <ArrowRight size={14} />
+              View
+              <ArrowRight size={12} />
             </Link>
           </div>
         </motion.div>
@@ -101,16 +92,16 @@ export default function DashboardPage() {
 
       {/* Upcoming trips */}
       <div>
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold">Upcoming Trips</h2>
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="text-sm font-semibold">Upcoming Trips</h2>
           <Link
             href="/trips"
-            className="text-sm text-muted transition-colors hover:text-foreground"
+            className="text-xs text-muted transition-colors hover:text-foreground"
           >
             View all
           </Link>
         </div>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="space-y-2">
           {upcomingTrips.map((trip, i) => (
             <TripCard key={trip.id} trip={trip} index={i} />
           ))}
@@ -120,33 +111,31 @@ export default function DashboardPage() {
       {/* Recent gifts */}
       {gifts.length > 0 && (
         <div>
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Recent Gifts</h2>
+          <div className="mb-3 flex items-center justify-between">
+            <h2 className="text-sm font-semibold">Recent Gifts</h2>
             <Link
               href="/gifts"
-              className="text-sm text-muted transition-colors hover:text-foreground"
+              className="text-xs text-muted transition-colors hover:text-foreground"
             >
               View all
             </Link>
           </div>
-          <div className="grid grid-cols-3 gap-5">
+          <div className="space-y-2">
             {gifts.slice(0, 3).map((gift) => (
               <div
                 key={gift.id}
-                className="rounded-xl border border-border bg-card p-5 transition-shadow hover:shadow-md"
+                className="rounded-lg border border-border bg-card p-3 transition-shadow hover:shadow-sm"
               >
                 <div className="flex items-start justify-between">
-                  <div>
-                    <p className="text-xs font-medium tracking-wider text-accent uppercase">
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] font-medium tracking-wider text-accent uppercase">
                       {gift.occasion}
                     </p>
-                    <h3 className="mt-1 font-semibold">{gift.tripTitle}</h3>
-                    <p className="mt-0.5 text-sm text-muted">
-                      {gift.destination}
-                    </p>
+                    <h3 className="mt-0.5 text-sm font-semibold truncate">{gift.tripTitle}</h3>
+                    <p className="text-xs text-muted">{gift.destination}</p>
                   </div>
                   <span
-                    className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                    className={`rounded-full px-2 py-0.5 text-[10px] font-medium shrink-0 ml-2 ${
                       gift.status === "activated"
                         ? "bg-success/10 text-success"
                         : gift.status === "delivered"
@@ -157,12 +146,11 @@ export default function DashboardPage() {
                     {gift.status}
                   </span>
                 </div>
-                <div className="mt-4 flex items-center justify-between border-t border-border pt-3">
-                  <p className="text-sm text-muted">
-                    From <span className="text-foreground">{gift.from}</span> to{" "}
-                    <span className="text-foreground">{gift.to}</span>
+                <div className="mt-2 flex items-center justify-between border-t border-border pt-2">
+                  <p className="text-xs text-muted">
+                    {gift.from} &rarr; {gift.to}
                   </p>
-                  <p className="font-semibold">
+                  <p className="text-sm font-semibold">
                     €{gift.amount.toLocaleString()}
                   </p>
                 </div>

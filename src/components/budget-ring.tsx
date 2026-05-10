@@ -8,8 +8,8 @@ interface BudgetRingProps {
   currency: string;
 }
 
-const RADIUS = 72;
-const STROKE = 10;
+const RADIUS = 52;
+const STROKE = 8;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 function formatCurrency(amount: number, currency: string): string {
@@ -27,7 +27,7 @@ export function BudgetRing({ spent, total, currency }: BudgetRingProps) {
   const viewSize = (RADIUS + STROKE) * 2;
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-3">
       <div className="relative" style={{ width: viewSize, height: viewSize }}>
         <svg
           width={viewSize}
@@ -63,7 +63,7 @@ export function BudgetRing({ spent, total, currency }: BudgetRingProps) {
         {/* Center text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <motion.span
-            className="text-xl font-semibold text-[#0A0A0A] tracking-tight"
+            className="text-base font-semibold text-[#0A0A0A] tracking-tight"
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.5 }}
@@ -71,7 +71,7 @@ export function BudgetRing({ spent, total, currency }: BudgetRingProps) {
             {formatCurrency(remaining, currency)}
           </motion.span>
           <motion.span
-            className="text-xs text-[#737373] mt-0.5"
+            className="text-[10px] text-[#737373] mt-0.5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.7 }}
@@ -82,14 +82,14 @@ export function BudgetRing({ spent, total, currency }: BudgetRingProps) {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center gap-6 text-sm">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#E8643A]" />
+      <div className="flex items-center gap-4 text-xs">
+        <div className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-[#E8643A]" />
           <span className="text-[#737373]">Spent</span>
           <span className="font-medium text-[#0A0A0A]">{formatCurrency(spent, currency)}</span>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#F5F5F5] border border-[#E5E5E5]" />
+        <div className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-[#F5F5F5] border border-[#E5E5E5]" />
           <span className="text-[#737373]">Total</span>
           <span className="font-medium text-[#0A0A0A]">{formatCurrency(total, currency)}</span>
         </div>
